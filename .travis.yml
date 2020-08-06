@@ -9,4 +9,5 @@ install:
 
 script:
   - npm run eslint
-  - npm run test:coveralls
+  - npm run gen2
+  - npm run gen3

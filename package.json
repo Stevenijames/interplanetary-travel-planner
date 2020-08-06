@@ -8,8 +8,11 @@
     "eslint": "eslint **/*.js",
     "eslint:fix": "eslint --fix **/*.js",
     "test": "mocha",
-    "test:coverage": "nyc --reporter=text npm run test",
-    "test:coveralls": "nyc report --reporter=text-lcov | coveralls"
+    "test:coverage": "nyc --reporter=text npm test",
+    "test:coveralls": "nyc npm test && nyc report --reporter=text-lcov | coveralls",
+    "gen2": "nyc --reporter=text-lcov npm test >lcov.info",
+    "gen3": "coveralls < lcov.info",
+    "gen": "nyc report --reporter=text-lcov >lcov.info && coveralls < lcov.info"
   },
   "repository": {
     "type": "git",
