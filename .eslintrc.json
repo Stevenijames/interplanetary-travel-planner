@@ -11,7 +11,7 @@
     "no-extra-semi": "error",
     "no-func-assign": "error",
     "no-irregular-whitespace": "error",
-    "no-unreachable": "error",
+    "no-unreachable": "warn",
     "curly": "error",
     "dot-notation": "error",
     "eqeqeq": "error",
