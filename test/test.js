@@ -1,5 +1,5 @@
 const { expect } = require("chai");
-const { awesomeAdd } = require("../server");
+const { awesomeAdd, awesomeSubtract } = require("../server");
 
 describe("Array", function () {
   describe("#indexOf()", function () {
@@ -15,4 +15,11 @@ describe("Functions", function () {
       expect(awesomeAdd(1, 5)).to.equal(6);
     });
   });
+
+  describe("awesomeSubtract()", function () {
+    it("should awesomely subtract values!", function () {
+      expect(awesomeSubtract(5, 3)).to.equal(2);
+    });
+  });
+
 });
