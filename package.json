@@ -4,9 +4,12 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "npm start server.js",
-    "lint": "eslint **/*.js --quiet",
-    "test": "npm run lint"
+    "start": "node server.js",
+    "eslint": "eslint **/*.js",
+    "eslint:fix": "eslint --fix **/*.js",
+    "test": "mocha",
+    "test:coverage": "nyc --reporter=text mocha",
+    "test:coveralls": "nyc --reporter=text-lcov npm test | coveralls"
   },
   "repository": {
     "type": "git",
@@ -20,11 +23,16 @@
   },
   "homepage": "https://github.com/mi544/interplanetary-travel-planner#readme",
   "dependencies": {
-    "chai": "^4.2.0",
     "dotenv": "^8.2.0",
-    "eslint": "^7.6.0",
-    "mocha": "^8.1.1",
     "mysql2": "^2.1.0",
     "sequelize": "^6.3.4"
+  },
+  "devDependencies": {
+    "chai": "^4.2.0",
+    "coveralls": "^3.1.0",
+    "cross-env": "^7.0.2",
+    "eslint": "^7.6.0",
+    "mocha": "^8.1.1",
+    "nyc": "^15.1.0"
   }
 }
