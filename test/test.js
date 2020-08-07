@@ -8,18 +8,3 @@ describe("Array", function () {
     });
   });
 });
-
-describe("Functions", function () {
-  describe("awesomeAdd()", function () {
-    it("should awesomely add values!", function () {
-      expect(awesomeAdd(1, 5)).to.equal(6);
-    });
-  });
-
-  describe("awesomeSubtract()", function () {
-    it("should awesomely subtract values!", function () {
-      expect(awesomeSubtract(5, 3)).to.equal(2);
-    });
-  });
-
-});
