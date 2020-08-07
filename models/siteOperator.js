@@ -1,6 +1,9 @@
 module.exports = function (sequelize, DataTypes) {
   const siteOperator = sequelize.define("siteOperator", {
-    name: DataTypes.STRING
+    name: {
+      type: DataTypes.STRING,
+      allowNull: false
+    }
   });
   return siteOperator;
 };
