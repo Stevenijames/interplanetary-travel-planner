@@ -1,5 +1,4 @@
 const { expect } = require("chai");
-const { awesomeAdd, awesomeSubtract } = require("../server");
 
 describe("Array", function () {
   describe("#indexOf()", function () {
