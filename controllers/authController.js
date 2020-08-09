@@ -26,6 +26,6 @@ module.exports = {
   logout: function (req, res) {
     req.logout();
     req.flash("successMsg", "You successfully logged out");
-    res.redirect("/");
+    res.redirect("/dashboard");
   }
 };
