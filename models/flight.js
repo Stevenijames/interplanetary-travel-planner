@@ -36,6 +36,10 @@ module.exports = function (sequelize, DataTypes) {
 
   Flight.associate = function (models) {
 
+    Flight.belongsTo(models.Amenity, {
+      through: "FlightAmenities"
+    });
+
     Flight.belongsTo(models.Planet, {
       foreignKey: {
         name: "flightPlanet",

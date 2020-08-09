@@ -36,17 +36,13 @@ module.exports = function (sequelize, DataTypes) {
       }
     });
 
-    Rocket.hasMany(models.Amenity, {
-      onDelete: 'NO ACTION'
+    Rocket.belongsToMany(models.Amenity, {
+      through: "RocketAmenities"
     });
 
-    Rocket.hasMany(models.Flight, {
-      onDelete: 'NO ACTION'
-    });
+    Rocket.hasMany(models.Flight);
 
-    Rocket.hasMany(models.Planet, {
-      onDelete: 'NO ACTION'
-    });
+    Rocket.hasMany(models.Planet);
   };
 
   return Rocket;

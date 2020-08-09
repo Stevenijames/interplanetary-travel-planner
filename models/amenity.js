@@ -16,11 +16,12 @@ module.exports = function (sequelize, DataTypes) {
 
   Amenity.associate = function (models) {
 
-    Amenity.belongsTo(models.Rocket, {
-      foreignKey: {
-        name: "amenitiesByRocket",
-        allowNull: false
-      }
+    Amenity.belongsToMany(models.Flight, {
+      through: "FlightAmenities"
+    });
+
+    Amenity.belongsToMany(models.Rocket, {
+      through: "RocketAmenities"
     });
   };
 

@@ -1,5 +1,3 @@
-const { Company } = require("./models");
-
 module.exports = function (sequelize, DataTypes) {
   const Country = sequelize.define("Country", {
     name: {
@@ -14,9 +12,7 @@ module.exports = function (sequelize, DataTypes) {
 
   Country.associate = function (models) {
 
-    Country.hasMany(models.Company, {
-      onDelete: "NO ACTION"
-    });
+    Country.hasMany(models.Company);
   };
   return Country;
 };
