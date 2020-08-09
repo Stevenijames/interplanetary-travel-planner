@@ -4,9 +4,8 @@ var isLoggedIn = require("../config/middleware/isLoggedIn");
 var authController = require("../controllers/authController.js");
 var apiRoutes = require("./api");
 
-// main route
 router.get("/", function (req, res) {
-  res.render("index", { successMsg: res.locals.successMsg });
+  res.render("index");
 });
 
 // API routes (add files/routes within '/api' to run CRUD operations against your
