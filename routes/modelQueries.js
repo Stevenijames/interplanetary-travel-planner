@@ -1,18 +1,41 @@
 const db = require("../models");
 
-const findAmenities = (req, res) => {
-  const amenitiesInfo = db.Amenity.findAll();
-  res.json(amenitiesInfo);
-};
+module.exports = {
+  findAmenities: (req, res) => {
+    db.Amenity.findAll().then(data => res.json(data));
 
-const findPlanets = (req, res) => {
-  const planetData = db.Planet.findAll();
-  res.json(planetData);
-};
+  },
 
-const findRockets = (req, res) => {
-  const rocketInfo = db.Rocket.findAll();
-  res.json(rocketInfo);
-};
+  findPlanets: (req, res) => {
+    db.Planet.findAll().then(data => res.json(data));
+  },
 
-module.exports = { findAmenities, findPlanets, findRockets };
+  findRockets: (req, res) => {
+    db.Rocket.findAll({
+      include: [db.Company]
+    }).then(data => res.json(data));
+  },
+
+  findFlights: (req, res) => {
+    if (!req.user) {
+      res.status(401).end();
+      return;
+    }
+
+    if (req.user.id === Number(req.params.id)) {
+      db.Flight.findAll({
+        where: {
+          id: Number(req.params.id)
+        },
+        include: [db.Planet, db.User, db.Rocket, db.Amenity]
+      }).then(data => {
+        console.log(data);
+        res.json(data);
+      }).catch(err => {
+        throw err;
+      });
+    } else {
+      res.status(401).end();
+    }
+  }
+};

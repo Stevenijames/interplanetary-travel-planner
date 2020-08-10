@@ -39,6 +39,12 @@ module.exports = function (sequelize, DataTypes) {
         allowNull: false
       }
     });
+
+    Flight.belongsTo(models.Rocket, {
+      foreignKey: {
+        allowNull: false
+      }
+    });
   };
 
   return Flight;
