@@ -1,11 +1,47 @@
+{{>header-navbar}}
 {{> messages}}
-<h1>Dashboard</h1>
-<h2>Welcome, {{email}}! You're logged in!</h2>
-<div class="card">
-    <div class="card-body">
-        <h3>Example user object (available as req.body in the controller only when user is logged in):</h3>
-        <pre>
+<a class="dashboard-block">
+    <div class="header">
+        <h3>Dashboard</h3>
+    </div>
+    <div class="line-break"></div>
+    <h3>Welcome, {{email}}! You're logged in!</h3>
+
+    <div class="expeditions-block">
+        <h3 class="header">Your interplanetary expeditions:</h3>
+        <table>
+            {{!-- GENERATE EXPEDITIONS HERE --}}
+            <thead>
+                <tr>
+                    <th>Flight ID</th>
+                    <th>Destination</th>
+                    <th>Date</th>
+                    <th>Company</th>
+                    <th>Rocket</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>cell1_1</td>
+                    <td>cell2_1</td>
+                    <td>cell3_1</td>
+                    <td>cell4_1</td>
+                    <td>cell4_1</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <div class="menu-block">
+        <a href="/expedition"><button>Explore the uncharted territories</button></a>
+    </div>
+
+    <div class="card">
+        <div class="card-body">
+            <h3>Example user object (available as req.body in the controller only when user is logged in):</h3>
+            <pre>
             {{user}}
         </pre>
+        </div>
     </div>
-</div>
+    </div>

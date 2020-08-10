@@ -4,9 +4,8 @@ var isLoggedIn = require("../config/middleware/isLoggedIn");
 var authController = require("../controllers/authController.js");
 var apiRoutes = require("./api");
 
-// main route
 router.get("/", function (req, res) {
-  res.render("index", { successMsg: res.locals.successMsg });
+  res.render("index");
 });
 
 // API routes (add files/routes within '/api' to run CRUD operations against your
@@ -18,6 +17,7 @@ router.get("/signup", authController.signup);
 router.get("/login", authController.login);
 router.get("/logout", authController.logout);
 router.get("/dashboard", isLoggedIn, authController.dashboard);
+router.get("/expedition", isLoggedIn, authController.expedition);
 
 router.post("/signup", passport.authenticate("local-signup", {
   successRedirect: "/dashboard",
