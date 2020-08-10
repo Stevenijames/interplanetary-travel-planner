@@ -29,7 +29,6 @@ module.exports = {
         },
         include: [db.Planet, db.User, db.Rocket, db.Amenity]
       }).then(data => {
-        console.log(data);
         res.json(data);
       }).catch(err => {
         throw err;
