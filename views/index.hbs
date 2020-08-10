@@ -69,18 +69,21 @@
 
 <div class="planets-block">
   <div class="planets-modal">
-    <div class="modal-image"><img src="assets/images/planets/earth.png" alt="earth"></div>
+    <div class="modal-image"><img id="planet-portrait" src="assets/images/planets/earth.png" alt="earth"></div>
     <div class="modal-header">
-      <h4>Earth</h4>
+      <h4 id="planet-title">Earth</h4>
     </div>
     <div class="line-break"></div>
     <div class="modal-text">
-      <p>
+      <p id="planet-info">
         This will be our launch point and also our return point. Oxygen, H2O and Mineral rich planet with a perfect
         distance from the sun. You'll be glad to come back to this solar oasis after your long interplanetary journey.
       </p>
     </div>
   </div>
+
+
+
   <div class="planets-solar-system">
     <div class="orbit1"></div>
     <div class="orbit2"></div>
@@ -125,7 +128,69 @@
     </div>
   </div>
 </div>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<script>
+$(document).ready((function () {
+  const planets = [
+    {
+      info: "Named after the Roman goddess of love and beauty. At 23.8 Million miles from Earth, Venus boast an atmosphere consisting of mostly carbon dioxide, with clouds of sulfuric acid droplets. For all the people who complain about being 'cold' on Earth, Venus's thick atmosphere traps the Sun's heat resulting in a slightly 880 degrees Fahrenheit. Be sure to bring lots of water or upgrade your amenities. You'll need every freakin' drop of that great H20!",
+      name: "venus",
+      portrait: "assets/images/planets/venus.png"
+    },
+    {
+      info: "Saturn is the most distant planet that can be seen with the naked eye. It is one of the flattest planets so you and your love ones will enjoy endless long walks and birthdays that come only every 29.4 years. For being so far out in our Solar System Saturn has gained numerous admirers, namely it's 150 moons and moonlets. Be sure to bring eyewear as Saturn boast being the fifth brightest object the Solar System. With highly visible rings made of dust, ice and rock our pilots have never gotten lost voyaging to this far out planet. ",
+      name: "saturn",
+      portrait: "assets/images/planets/saturn.png"
+    },
+    {
+      info: "This will be our launch point and also our return point.  Oxygen, H2O and Mineral rich planet with a perfect distance from the sun. You'll be glad to come back to this solar oasis after your long interplanetary	journey.",
+      name: "earth",
+      portrait: "assets/images/planets/earth.png"
+    },
+    {
+      info: "Discovered in 1781 by astronomer William Herschel, Uranus was the first planet to be found using a telescope. If you need to 'cool off' from your earthly worries, Uranus is an Ice Giant nearly four times larger than Earth.  You'll need to bring your equilibrium medication since Uranus rotates east to west on its side. Don't be worried that this planet doesn't support life, you may just want to bury any likeness of your distant past.",
+      name: "uranus",
+      portrait: "assets/images/planets/uranus.png"
+    },
+    {
+      info: "A carbon dioxide rich, red planet that is 48.6 million miles from earth. This planet is on target to become one of the first planets that will be colonized by Space X founder Elon Musk. Travel to this planet in a Starship capsule powered by liquid methane engines. With guaranteed aerial refueling stations you'll be sure to make this a family vacation spot for years to come. Oh, pack a light jacket as Mars averages -81 degrees Fahrenheit and with wintertime lows at -220 degrees Fahrenheit 'burrrrrrrr'.",
+      name: "mars",
+      portrait: "assets/images/planets/mars.png"
+    },
+    {
+      info: "This Massive planet in our solar system is 318 times more massive than the earth. In fact Jupiter is 2.5 times more massive than all the of the planets in our Solar System combined. Flying to Jupiter isn't cheap with only seven visits by spacecraft. If your feeling like you need a little jumpstart to your day you'll quickly be whipped into shape as Jupiter  rotates at around 28,148 mph. Equally a quick night & day cycle will happen in only 10 hours so be ready to carpe diem. Be sure to pack an extra lead jacket for you and your guests as you will experience a magnetic field 14 times stronger than Earth's and radiation levels that will blow your socks off.",
+      name: "jupiter",
+      portrait: "assets/images/planets/jupiter.png"
+    },
+    {
+      info: "This gas giant is eighth planet from the Sun, making it the most distant planet in our Solar System. While not being very visible with the naked eye it was first observed in 1846 and has only been visited by a fly-by spacecraft once. This hydrogen , helium and methane gas laden planet will have you absorbing red light which in turn makes everything blue. Be sure to keep your seatbelts buckled during entry as Neptune is known for storm winds speeds of up to 1,500 mph.  Wanna be 'Forever Young'? Well, on Neptune you'll always be with a complete orbit of the sun every 165 years.",
+      name: "neptune",
+      portrait: "assets/images/planets/neptune.png"
+    },
+    {
+      info: "Want a tan for your amazing beach body? You can get crispy and fired up with temperatures reaching 15 million degrees Celsius! Be sure to cool off by visiting the Sun's surface where the temperature is a mere 5,600 degrees Celsius. The Sun is an almost perfect sphere of Hydrogen and Helium, with nuclear fusion happening at its core. Don't be fooled this is one of our Hottest destinations with daily one-way trips on your schedule.",
+      name: "sun"
+    }
+  ];
 
+  const selectPlanet = (planetName) => {
+    const { name, info, portrait } = planets.find((planet) => planet.name === planetName);
+
+    $("#planet-portrait").attr("src", portrait);
+    $("#planet-title").text(`${name.charAt(0).toUpperCase()}${name.slice(1)}`);
+    $("#planet-info").text(info);
+  }
+  
+  $(".mercury").on("click", () => selectPlanet("mercury"));
+  $(".venus").on("click", () => selectPlanet("venus"));
+  $(".earth").on("click", () => selectPlanet("earth"));
+  $(".mars").on("click", () => selectPlanet("mars"));
+  $(".jupiter").on("click", () => selectPlanet("jupiter"));
+  $(".saturn").on("click", () => selectPlanet("saturn"));
+  $(".uranus").on("click", () => selectPlanet("uranus"));
+  $(".neptune").on("click", () => selectPlanet("neptune"));
+}));
+</script>
 <div class="rockets-block">
   <div class="header">
     <h2>Rockets you can count on!</h2>
