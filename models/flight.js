@@ -1,13 +1,5 @@
 module.exports = function (sequelize, DataTypes) {
   const Flight = sequelize.define("Flight", {
-    refIdCompany: {
-      type: DataTypes.INTEGER,
-      allowNull: false
-    },
-    refIdRocket: {
-      type: DataTypes.INTEGER,
-      allowNull: false
-    },
     destination: {
       type: DataTypes.STRING,
       allowNull: false
@@ -17,32 +9,33 @@ module.exports = function (sequelize, DataTypes) {
       allowNull: false
     },
     totalCost: {
-      type: DataTypes.INTEGER,
-      allowNull: false
-    },
-    includedAmenities: {
-      type: DataTypes.STRING,
+      type: DataTypes.BIGINT,
       allowNull: false
     },
     flightNumber: {
-      type: DataTypes.INTEGER,
+      type: DataTypes.STRING,
       allowNull: false
     },
     timestamp: {
-      type: DataTypes.INTEGER,
+      type: DataTypes.DATE,
       allowNull: false
     }
   });
 
   Flight.associate = function (models) {
 
-    Flight.belongsTo(models.Amenity, {
+    Flight.belongsToMany(models.Amenity, {
       through: "FlightAmenities"
     });
 
     Flight.belongsTo(models.Planet, {
       foreignKey: {
-        name: "flightPlanet",
+        allowNull: false
+      }
+    });
+
+    Flight.belongsTo(models.User, {
+      foreignKey: {
         allowNull: false
       }
     });

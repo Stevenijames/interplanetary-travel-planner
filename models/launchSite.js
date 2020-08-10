@@ -4,13 +4,13 @@ module.exports = function (sequelize, DataTypes) {
       type: DataTypes.STRING,
       allowNull: false
     },
-    location: {
+    // location: {
+    //   type: DataTypes.STRING,
+    //   allowNull: false
+    // },
+    operatedBy: {
       type: DataTypes.STRING,
-      allowNull: false
-    },
-    refIdOperatedBy: {
-      type: DataTypes.STRING,
-      allowNull: false
+      allowNull:false
     }
   });
   return launchSite;

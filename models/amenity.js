@@ -20,9 +20,9 @@ module.exports = function (sequelize, DataTypes) {
       through: "FlightAmenities"
     });
 
-    Amenity.belongsToMany(models.Rocket, {
-      through: "RocketAmenities"
-    });
+    // Amenity.belongsToMany(models.Rocket, {
+    //   through: "RocketAmenities"
+    // });
   };
 
   return Amenity;

@@ -13,5 +13,16 @@ module.exports = function (sequelize, DataTypes) {
       allowNull: false
     }
   });
+
+  User.associate = function (models) {
+
+    User.hasMany(models.Flight, {
+      foreignKey: {
+        allowNull: false
+      }
+    });
+
+  };
+
   return User;
 };

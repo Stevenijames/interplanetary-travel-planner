@@ -1,6 +1,6 @@
 module.exports = function (sequelize, DataTypes) {
   const Rocket = sequelize.define("Rocket", {
-    modelName: {
+    name: {
       type: DataTypes.STRING,
       allowNull: false,
       unique: true
@@ -10,7 +10,7 @@ module.exports = function (sequelize, DataTypes) {
       allowNull: false
     },
     range: {
-      type: DataTypes.INTEGER,
+      type: DataTypes.BIGINT,
       allowNull: false
     },
     cruisingSpeed: {
@@ -20,10 +20,6 @@ module.exports = function (sequelize, DataTypes) {
     launchCost: {
       type: DataTypes.INTEGER,
       allowNull: false
-    },
-    refIdCompany: {
-      type: DataTypes.STRING,
-      allowNull: false
     }
   });
 
@@ -31,14 +27,13 @@ module.exports = function (sequelize, DataTypes) {
 
     Rocket.belongsTo(models.Company, {
       foreignKey: {
-        name: "companyRockets",
         allowNull: false
       }
     });
 
-    Rocket.belongsToMany(models.Amenity, {
-      through: "RocketAmenities"
-    });
+    // Rocket.belongsToMany(models.Amenity, {
+    //   through: "rocketAmenities"
+    // });
 
     Rocket.hasMany(models.Flight);
 

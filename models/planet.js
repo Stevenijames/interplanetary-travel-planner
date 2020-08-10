@@ -6,20 +6,15 @@ module.exports = function (sequelize, DataTypes) {
       unique: true
     },
     distance: {
-      type: DataTypes.INTEGER,
+      type: DataTypes.BIGINT,
       allowNull: false
     }
   });
 
-  Planet.associate = function (models) {
+  // Planet.associate = function (models) {
 
-    Planet.belongsTo(models.Rocket, {
-      foreignKey: {
-        name: "planetRockets",
-        allowNull: false
-      }
-    });
-  };
+
+  // };
 
   return Planet;
 };
