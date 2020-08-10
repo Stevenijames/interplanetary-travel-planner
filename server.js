@@ -41,7 +41,7 @@ app.use(function (req, res, next) {
 app.use(routes);
 
 // sync w/database
-db.sequelize.sync()
+db.sequelize.sync({force: false})
   .then(() => {
     app.listen(PORT, function (err) {
       if (err) {

@@ -11,7 +11,6 @@ module.exports = function (sequelize, DataTypes) {
 
     Company.belongsTo(models.Country, {
       foreignKey: {
-        name: "companyCountry",
         allowNull: false
       }
     });

@@ -3,16 +3,14 @@ module.exports = function (sequelize, DataTypes) {
     name: {
       type: DataTypes.STRING,
       allowNull: false
-    },
-    refIdRocket: {
-      type: DataTypes.INTEGER,
-      allowNull: false
     }
   });
 
   Country.associate = function (models) {
 
-    Country.hasMany(models.Company);
+    Country.hasMany(models.Company, {
+      onDelete: "cascade"
+    });
   };
   return Country;
 };
