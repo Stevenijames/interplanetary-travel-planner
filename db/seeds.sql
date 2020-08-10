@@ -1,6 +1,7 @@
 USE interplanetary_travel;
 
-INSERT INTO amenities (name, cost, description, createdAt, updatedAt)
+INSERT INTO `amenities`
+(`name`, `cost`, `description`, `createdAt`, `updatedAt`)
 VALUES
 ('All You Can Eat Shrimp', 26, 'Enjoy all you can eat shrimp! Price is calculated per 24-hour cycle. Must choose ammount prior to departure date.', CURRENT_TIMESTAMP, CURRENT_TIMESTAMP),
 ('Private Bedroom', 35000, 'Enjoy privacy in a custom-built compartment providing the maximum level of comfort for a single individual.', CURRENT_TIMESTAMP, CURRENT_TIMESTAMP),
@@ -8,23 +9,27 @@ VALUES
 ('Influencer Package', 80000, 'A professional photographer/videographer will join your mission and document the entire story visually, making you the star of an adventure that you will be sharing for the rest of your life!', CURRENT_TIMESTAMP, CURRENT_TIMESTAMP),
 ('Upgraded Personal Items', 7500, 'This package provides an additional compartment of storage space for your personal belongings for the entirity of the trip.', CURRENT_TIMESTAMP, CURRENT_TIMESTAMP);
 
-INSERT INTO countries (name, createdAt, updatedAt)
+INSERT INTO `countries`
+(`name`, `createdAt`, `updatedAt`)
 VALUES
 ('United States',  CURRENT_TIMESTAMP, CURRENT_TIMESTAMP);
 
-INSERT INTO companies (name, createdAt, updatedAt, CountryId)
+INSERT INTO `companies`
+(`name`, `createdAt`, `updatedAt`, `CountryId`)
 VALUES
  ('Blue Origin', CURRENT_TIMESTAMP, CURRENT_TIMESTAMP, 1),
  ('SpaceX', CURRENT_TIMESTAMP, CURRENT_TIMESTAMP, 1),
  ('United Launch Alliance', CURRENT_TIMESTAMP, CURRENT_TIMESTAMP, 1);
 
-INSERT INTO launchSites (`name`, `operatedBy`, `createdAt`, `updatedAt`) 
+INSERT INTO launchSites
+(`name`, `operatedBy`, `createdAt`, `updatedAt`) 
 VALUES
 ('Cape Canaveral, Florida', 'NASA', CURRENT_TIMESTAMP, CURRENT_TIMESTAMP),
 ('Cape Canaveral Air Force Station', 'USAF', CURRENT_TIMESTAMP, CURRENT_TIMESTAMP),
 ('Vandenburg Air Force Base', 'USAF', CURRENT_TIMESTAMP, CURRENT_TIMESTAMP);
 
-INSERT INTO planets (`name`, `distance`, `createdAt`, `updatedAt`)
+INSERT INTO `planets`
+(`name`, `distance`, `createdAt`, `updatedAt`)
 VALUES
 ('Sun', 93000000000, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP),
 ('Mercury', 57000000000, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP),
@@ -36,7 +41,9 @@ VALUES
 ('Uranus', 1690000000, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP),
 ('Neptune', 2700000000, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP);
 
-INSERT INTO rockets (`name`, `passengers`, `range`, `cruisingSpeed`, `launchCost`, `createdAt`, `updatedAt`, `CompanyId`) VALUES
+INSERT INTO `rockets`
+(`name`, `passengers`, `range`, `cruisingSpeed`, `launchCost`, `createdAt`, `updatedAt`, `CompanyId`)
+VALUES
 ('Atlas V', 2, 50000000000, 45000, 100000, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP, 3),
 ('Delta IV', 4, 100000000000, 47000, 150000, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP, 3),
 ('Delta V', 4, 500000000000, 50000, 200000, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP, 3),
@@ -49,8 +56,17 @@ INSERT INTO rockets (`name`, `passengers`, `range`, `cruisingSpeed`, `launchCost
 ('New Glenn 2 Stage', 3, 40000000000, 26000, 350000, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP, 1),
 ('New Glenn 3 Stage', 5, 150000000, 30000, 550000, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP, 1);
 
-INSERT INTO flights (`destination`, `arrivalTimeEst`, `totalCost`, `flightNumber`, `timestamp`, `createdAt`, `updatedAt`, `PlanetId`, `UserId`, `RocketId`)
+INSERT INTO `flights`
+(`destination`, `arrivalTimeEst`, `totalCost`, `flightNumber`, `timestamp`, `createdAt`, `updatedAt`, `PlanetId`, `UserId`, `RocketId`)
 VALUES
 ('Neptune', 10000, 1600000000000, 'ECA543', CURRENT_TIMESTAMP, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP, 8, 1, 9),
 ('Saturn', 1000, 1340000000000, 'JFA191', CURRENT_TIMESTAMP, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP, 8, 1, 9),
 ('Mars', 100, 80000000, 'XMRA43', CURRENT_TIMESTAMP, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP, 8, 1, 9);
+
+INSERT INTO `flightamenities`
+(`createdAt`, `updatedAt`, `AmenityId`, `FlightId`)
+VALUES
+(CURRENT_TIMESTAMP, CURRENT_TIMESTAMP, 1, 1),
+(CURRENT_TIMESTAMP, CURRENT_TIMESTAMP, 2, 1),
+(CURRENT_TIMESTAMP, CURRENT_TIMESTAMP, 4, 1),
+(CURRENT_TIMESTAMP, CURRENT_TIMESTAMP, 5, 1);
