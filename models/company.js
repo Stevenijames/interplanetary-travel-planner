@@ -1,6 +1,21 @@
 module.exports = function (sequelize, DataTypes) {
   const Company = sequelize.define("Company", {
-    name: DataTypes.STRING
+    name: {
+      type: DataTypes.STRING,
+      allowNull: false
+    }
   });
+
+  Company.associate = function (models) {
+    Company.hasMany(models.Rocket);
+
+    Company.belongsTo(models.Country, {
+      foreignKey: {
+        name: "companyCountry",
+        allowNull: false
+      }
+    });
+  };
+
   return Company;
 };
