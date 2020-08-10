@@ -35,9 +35,9 @@ module.exports = function (sequelize, DataTypes) {
     //   through: "rocketAmenities"
     // });
 
-    Rocket.hasMany(models.Flight);
-
-    Rocket.hasMany(models.Planet);
+    Rocket.hasMany(models.Flight, {
+      onDelete: "cascade"
+    });
   };
 
   return Rocket;
