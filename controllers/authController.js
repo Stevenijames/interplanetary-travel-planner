@@ -23,6 +23,12 @@ module.exports = {
       user: JSON.stringify(req.user, null, 2)
     });
   },
+  expedition: function (req, res) {
+    res.render("expedition", {
+      email: req.user.email,
+      user: JSON.stringify(req.user, null, 2)
+    });
+  },
   logout: function (req, res) {
     req.logout();
     req.flash("successMsg", "You successfully logged out");
