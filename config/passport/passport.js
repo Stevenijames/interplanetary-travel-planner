@@ -26,8 +26,8 @@ module.exports = function (passport, user) {
     passwordField: "password",
     passReqToCallback: true
   }, function (req, email, password, done) {
-    if (password.length < 8 || password.toUpperCase() === password || password.toLowerCase() === password) {
-      return done(null, false, { message: "Passwords must be at least 8 characters and must contain uppercase and lowercase letters" });
+    if (password.length < 8) {
+      return done(null, false, { message: "Passwords must be at least 8 characters long" });
     }
 
     const generateHash = function (password) {
