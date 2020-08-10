@@ -1,5 +1,5 @@
 module.exports = function (sequelize, DataTypes) {
-  const Rocket = sequelize.define('Rocket', {
+  const Rocket = sequelize.define("Rocket", {
     modelName: {
       type: DataTypes.STRING,
       allowNull: false,
@@ -31,7 +31,7 @@ module.exports = function (sequelize, DataTypes) {
 
     Rocket.belongsTo(models.Company, {
       foreignKey: {
-        name: 'companyRockets',
+        name: "companyRockets",
         allowNull: false
       }
     });

@@ -1,5 +1,5 @@
 module.exports = function (sequelize, DataTypes) {
-  const Company = sequelize.define('Company', {
+  const Company = sequelize.define("Company", {
     name: {
       type: DataTypes.STRING,
       allowNull: false
@@ -11,7 +11,7 @@ module.exports = function (sequelize, DataTypes) {
 
     Company.belongsTo(models.Country, {
       foreignKey: {
-        name: 'companyCountry',
+        name: "companyCountry",
         allowNull: false
       }
     });
