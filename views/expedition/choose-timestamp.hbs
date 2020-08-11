@@ -1,6 +1,11 @@
 {{>header-navbar}}
 {{> messages}}
-{{!-- First mile is free --}}
+<a href="/logout">
+    <div class="logout-button">Logout</div>
+</a>
+<a href="/api/reset">
+    <div class="reset-button">Reset</div>
+</a>
 <div class="dashboard-block">
     <div class="header">
         <h3>Expedition</h3>
@@ -8,11 +13,10 @@
     <div class="line-break"></div>
 
     <div class="expeditions-block">
-        <h3 class="header">Choose Timestamp:</h3>
-        <h3>Choose your preferred date of launch: (at least 30 days from now)</h3>
+        <h3 class="header">Choose the Launch Date:</h3>
         <form name="timestamp-form" id="timestamp-form" action="/api/add/timestamp" method="POST">
             <input type="date" name="timestamp" id="timestamp">
-            <button type="submit">Submit</button>
+            <button type="submit">You are go for launch!</button>
         </form>
     </div>
 </div>

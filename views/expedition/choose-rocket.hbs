@@ -1,6 +1,11 @@
 {{>header-navbar}}
 {{> messages}}
-{{!-- First mile is free --}}
+<a href="/logout">
+    <div class="logout-button">Logout</div>
+</a>
+<a href="/api/reset">
+    <div class="reset-button">Reset</div>
+</a>
 <div class="dashboard-block">
     <div class="header">
         <h3>Expedition</h3>
@@ -8,25 +13,33 @@
     <div class="line-break"></div>
 
     <div class="expeditions-block">
-        <h3 class="header">Choose Rocket:</h3>
-        <h4>Choose your destination!</h4>
-        <ul>
-            {{#each rockets}}
-            <li>{{ dataValues.name }}<button data-rocket={{ dataValues.id }}>Choose</button></li>
-            {{/each}}
-        </ul>
+        <table>
+            <thead>
+                <tr>
+                    <th>Rocket</th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                {{#each rockets }}
+                <tr>
+                    <td>{{ dataValues.name }}</td>
+                    <td><button data-rocket={{ dataValues.id }}>Choose</button></td>
+                </tr>
+                {{/each}}
+            </tbody>
+        </table>
     </div>
 </div>
-
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 <script>
     $("button").on("click", function () {
         const rocketId = $(this).data("rocket");
         console.log(rocketId);
-        $.ajax(`/api/add/rocket/${rocketId}`, {
-            type: "POST"
-        }).then(() => {
-            setTimeout(function () { location.reload(true) }, 100);
-        }).catch(err => console.log(err));
+        $.post(`/api/add/rocket/${rocketId}`)
+            .then(() => {
+                setTimeout(function () { location.reload(true) }, 100);
+            })
+            .catch(err => console.log(err));
     });
 </script>

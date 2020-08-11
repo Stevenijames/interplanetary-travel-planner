@@ -1,4 +1,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Space+Mono:ital@1&display=swap');
+
 
 body {
   font-family: 'Montserrat', sans-serif;
@@ -956,7 +958,9 @@ ul {
 
 .welcome-block #welcome-title {
   position: absolute;
-  top: calc(100px + 15%);
+  text-align: center;
+  max-width: 17%;
+  top: 15%;
   left: 70%;
   background: #3eacd1;
   color: aliceblue;
@@ -974,47 +978,83 @@ ul {
 
 .about-block {
   min-height: 300px;
-  display: flex;
   justify-content: center;
   align-items: center;
   background: rgb(201, 231, 236);
+  background: url("/assets/images/night_launch.jpg");
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
   border-top: 30px solid #333;
 }
 
-.about-block .about-text {
+.about-block>video {
+  margin: 50px auto 50px 15%;
+  max-width: 70%;
+  border-radius: 20px;
+  box-shadow: 0px 0px 6px 5px #03a8f46b;
+}
+
+
+.about-block-container {
+  display: flex;
+}
+
+.about-block-container .about-text {
   display: flex;
   flex-direction: column;
 }
 
-.about-block .about-company-text {
+.about-block-container .about-company-text {
   display: flex;
   flex-direction: column;
+  justify-content: center;
 }
 
-.about-block iframe {
-  margin: 20px;
+.about-block-container .about-text .welcome-text {
+  background: #fff;
+  padding: 3vh 5%;
+  margin: 5vh 4% 2vh 1%;
+  font-size: 1.2em;
+  line-height: 1.4em;
+  box-sizing: border-box;
+  box-shadow: 0px 0px 6px 5px #03a8f46b;
 }
 
-.about-block .about-text .welcome-text {
-  background: rgb(244, 255, 255);
-  width: 100%;
+.about-block-container .about-text .welcome-text p {
+  margin-block-start: 0;
+  margin-block-end: 0;
+}
+
+.about-block-container .about-text .welcome-image {
   padding: 1vh 2%;
   margin: 1vh 4% 1vh 1%;
   font-size: 22px;
   box-sizing: border-box;
 }
 
-.about-block .about-text:nth-child(1) {
+.about-block-container .about-text .welcome-image img {
+  width: 100%;
+  background: #fff;
+  padding: 5px;
+  border-radius: 10px;
+  box-shadow: 0px 0px 6px 5px #03a8f46b;
+}
+
+.about-block-container .about-text:nth-child(1) {
   margin: 3vh 4% 1vh 1%;
 }
 
-.about-block .about-planets {
+.about-block-container .about-planets {
+  font-family: 'Space Mono', monospace;
   background: #fff;
   min-height: 300px;
   min-width: 300px;
   margin-right: 10%;
   padding: 20px;
-  font-size: 2em;
+  font-size: 1.5em;
+  line-height: 1.4em;
+  box-shadow: 0px 0px 6px 5px #03a8f46b;
 }
 
 /* ----------------------- */
@@ -1022,8 +1062,11 @@ ul {
 .planets-block {
   /* background: rgb(253, 199, 163);
   background: radial-gradient(circle, rgba(253, 199, 163, 1) 24%, rgba(245, 184, 225, 1) 53%, rgba(144, 154, 242, 1) 87%); */
-  height: 900px;
+  height: 1100px;
+  min-height: 900px;
   position: relative;
+  overflow-x: hidden;
+  overflow-y: hidden;
 }
 
 .planets-modal {
@@ -1031,9 +1074,10 @@ ul {
   display: flex;
   flex-direction: column;
   top: 50%;
-  left: 20%;
-  height: 700px;
-  width: 600px;
+  left: 18%;
+  min-height: 700px;
+  width: 30%;
+  max-width: 40%;
   transform: translate(-50%, -50%);
   background: #fff;
   z-index: 1;
@@ -1064,7 +1108,7 @@ ul {
   justify-content: center;
   align-items: center;
   position: relative;
-  left: 60%;
+  left: 70%;
   top: 50%;
   transform: translate(-50%, -50%);
   width: 800px;
@@ -1287,12 +1331,19 @@ ul {
 }
 
 .rockets-block-container .card {
-  max-width: 40%;
+  max-width: 20%;
 }
 
 
 .rockets-block .header h2 {
-  text-shadow: 0 0 3px #fff, 0 0 3px #fff, 0 0 3px #fff;
+  color: #fff;
+  font-size: 0.9em;
+  text-shadow: 0 0 3px #fff, 0 0 3px #fff;
+}
+
+.rockets-block .header .smaller-header {
+  font-size: 0.5em;
+  margin: 20px auto;
 }
 
 /* ----------------------- */
@@ -1306,7 +1357,8 @@ ul {
 
 .launch-sites-block .header h2 {
   color: #fff;
-  text-shadow: 0 0 3px #fff;
+  font-size: 0.9em;
+  text-shadow: 0 0 3px #fff, 0 0 3px #fff;
 }
 
 .launch-sites-block .card {
@@ -1377,6 +1429,48 @@ ul {
 /* ----------------------- */
 /* ----------------------- */
 /* ----------------------- */
+.easter-gif {
+  position: fixed;
+  left: 3%;
+  opacity: 0;
+  animation: gif-appear 3s linear 10s 1 forwards;
+}
+
+.easter-gif-signup {
+  animation: gif-appear 3s linear 3s 1 forwards
+}
+
+@keyframes gif-appear {
+  0% {
+    opacity: 0;
+  }
+
+  100% {
+    opacity: 1;
+  }
+}
+
+.easter-gif img {
+  border-radius: 20px;
+  max-width: 75%;
+}
+
+.example {
+  min-height: 100px;
+  min-width: 200px;
+  position: fixed;
+  right: 20%;
+  top: 50%;
+  text-align: center;
+  background: #fff;
+  border-radius: 2px;
+}
+
+.example-header {
+  text-shadow: 0 0 5px #fff;
+  font-size: 1.2em;
+  padding: 5px;
+}
 
 .login-signup-block {
   display: flex;
@@ -1418,7 +1512,7 @@ ul {
   text-align: center;
 }
 
-.login-signup-block .login-signup-button {
+.login-signup-button {
   padding: 20px;
   text-align: center;
   background: rgb(255, 53, 189, .2);
@@ -1429,11 +1523,11 @@ ul {
 
 }
 
-.login-signup-block .login-signup-button:hover {
+.login-signup-button:hover {
   animation: button-gradient-animation2 10s linear 0s infinite;
 }
 
-.login-signup-block .login-signup-button:active {
+.login-signup-button:active {
   filter: brightness(0.3);
   transition: .1s;
 }
@@ -1498,12 +1592,256 @@ ul {
 
 .dashboard-block .header {
   color: #fff;
+  text-shadow: 0 0 3px #fff, 0 0 3px #fff;
+
 }
 
 .dashboard-block .line-break {
   border-top: 2px solid #fff;
 }
 
-.dashboard-block .menu-block {}
+#black-line-break {
+  border-top: 2px solid #333;
+}
+
+.menu-block {
+  display: flex;
+  justify-content: center;
+}
+
+.menu-block button {
+  font-weight: bold;
+  color: rgb(212, 212, 212)
+}
+
+.expeditions-block button {
+  width: 80%;
+  padding: 20px 40px;
+  margin: 20px;
+}
+
+.expeditions-block .login-signup-button {
+  text-align: center;
+  background: rgba(255, 53, 188, 0.555);
+  background: linear-gradient(90deg, rgba(105, 120, 255, 0.699) 23%, rgba(255, 53, 188, 0.671) 52%);
+  background-size: 200%;
+  text-transform: uppercase;
+  box-sizing: border-box;
+}
+
+.expeditions-block .header {
+  color: #fff;
+  text-shadow: 0 0 3px #fff, 0 0 3px #fff, 0 0 3px #fff;
+}
+
+table {
+  margin: auto;
+  border: 4px solid #555555;
+  background-color: #555555;
+  width: 70%;
+  min-height: 300px;
+  text-align: center;
+  border-collapse: collapse;
+  font-size: 1.3em;
+}
+
+table td,
+table th {
+  border: 1px solid #555555;
+  padding: 5px 10px;
+}
+
+table tbody td {
+  font-size: 1.3em;
+  font-weight: normal;
+  color: #FFFFFF;
+  border: 2px solid #fff;
+}
+
+table td:nth-child(even) {
+  background: #398AA4;
+  border: 2px solid #555555;
+}
+
+table thead {
+  background: #398AA4;
+  border-bottom: 10px solid #fff;
+}
+
+table thead th {
+  font-size: 15px;
+  font-weight: bold;
+  color: #FFFFFF;
+  text-align: left;
+  border-left: 2px solid #398AA4;
+}
+
+table thead th:first-child {
+  border-left: none;
+}
+
+table tfoot td {
+  font-size: 13px;
+}
+
+table tfoot .links {
+  text-align: right;
+}
+
+table tfoot .links a {
+  display: inline-block;
+  background: #FFFFFF;
+  color: #398AA4;
+  padding: 2px 8px;
+  border-radius: 5px;
+}
+
+.logout-button {
+  position: absolute;
+  top: 15px;
+  right: 80px;
+  height: 35px;
+  width: 70px;
+  background: rgba(255, 89, 89, 0.685);
+  padding: 25px 10px 10px 10px;
+  text-align: center;
+  border-radius: 10px;
+}
 
 /* ----------------------- */
+/* ----------------------- */
+/* CHOOSE PLANET */
+/* ----------------------- */
+/* ----------------------- */
+
+.expeditions-block {
+  position: relative;
+}
+
+#choose-planet {
+  padding: 15px 25px;
+  background: rgb(255, 53, 189, .2);
+  background: linear-gradient(90deg, rgba(144, 154, 242, .2) 23%, rgba(255, 53, 189, .2) 52%, rgba(144, 154, 242, .2) 80%);
+  background-size: 200%;
+  text-transform: uppercase;
+  box-sizing: border-box;
+  animation: choose-planet-gradient-animation 4s linear 0s infinite;
+}
+
+@keyframes choose-planet-gradient-animation {
+  from {
+    background-position: 0%;
+  }
+
+  10% {
+    box-shadow: 0px 0px 20px 5px #03a9f4;
+  }
+
+  to {
+    background-position: 400%;
+  }
+}
+
+.reset-button {
+  position: absolute;
+  top: 15px;
+  left: 5px;
+  height: 35px;
+  width: 65px;
+  background: rgb(255 255 255 / 65%);
+  padding: 25px 10px 10px 10px;
+  text-align: center;
+  border-radius: 10px;
+}
+
+
+/* ----------------------- */
+/* ----------------------- */
+/* TIMESTAMP */
+/* ----------------------- */
+/* ----------------------- */
+
+form#timestamp-form {
+  display: flex;
+  text-align: center;
+  flex-direction: column;
+  max-width: 60%;
+  align-items: center;
+  margin: auto;
+}
+
+input#timestamp {
+  margin-top: 25px;
+  text-align: center;
+  height: 100px;
+  width: 300px;
+  font-size: 1.5em;
+  letter-spacing: 1px;
+  padding: 10px 20px;
+}
+
+form#timestamp-form button {
+  margin-top: 50px;
+  background: linear-gradient(90deg, rgba(137, 255, 174, 1) 10%, rgba(163, 171, 249, 1) 50%, rgba(137, 255, 174, 1) 90%);
+  height: 150px;
+  color: #fff;
+  font-weight: bold;
+  font-size: 2.5em;
+  text-transform: uppercase;
+  letter-spacing: 4px;
+  box-sizing: border-box;
+  background-size: 400%;
+  word-wrap: break-word;
+  animation: final-submit-button-gradient-animation 5s linear 0s infinite;
+}
+
+form#timestamp-form button:hover {
+  animation: final-submit-button-gradient-animation-hover 5s linear 0s infinite;
+
+}
+
+@keyframes final-submit-button-gradient-animation {
+  from {
+    box-shadow: 0px 0px 10px 10px #7cffb7;
+  }
+
+  50% {
+    box-shadow: 0px 0px 30px 20px #7cffb7;
+  }
+
+  to {
+    box-shadow: 0px 0px 10px 10px #7cffb7;
+
+  }
+}
+
+@keyframes final-submit-button-gradient-animation-hover {
+  from {
+    background-position: 0%;
+    box-shadow: 0px 0px 10px 10px #7cffb7;
+  }
+
+  50% {
+    background-position: 100%;
+    box-shadow: 0px 0px 100px 50px #7cffb7;
+  }
+
+  to {
+    background-position: 400%;
+    box-shadow: 0px 0px 10px 10px #7cffb7;
+  }
+}
+
+/* ----------------------- */
+
+/* SUCCESS */
+
+/* ----------------------- */
+
+.success-block img {
+  margin-left: 25%;
+  padding: 5px;
+  background: #fff;
+  border-radius: 5px;
+  box-shadow: 0px 0px 12px 6px #ea8ee8;
+}
