@@ -1,6 +1,6 @@
 USE interplanetary_travel;
 
-INSERT INTO `user`
+INSERT INTO `users`
 (`email`, `password`, `createdAt`, `updatedAt`)
 VALUES
 ("example@email.com", "$2a$10$8c3rCMo6bJagpE8lmyTmtewaCnIK/VsEaPGk0mrSIpX1lE5haT2U2", CURRENT_TIMESTAMP, CURRENT_TIMESTAMP);
