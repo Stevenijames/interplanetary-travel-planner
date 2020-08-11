@@ -1,5 +1,10 @@
 USE interplanetary_travel;
 
+INSERT INTO `user`
+(`email`, `password`, `createdAt`, `updatedAt`)
+VALUES
+("example@email.com", "$2a$10$8c3rCMo6bJagpE8lmyTmtewaCnIK/VsEaPGk0mrSIpX1lE5haT2U2", CURRENT_TIMESTAMP, CURRENT_TIMESTAMP);
+
 INSERT INTO `amenities`
 (`name`, `cost`, `description`, `createdAt`, `updatedAt`)
 VALUES
@@ -21,7 +26,7 @@ VALUES
  ('SpaceX', CURRENT_TIMESTAMP, CURRENT_TIMESTAMP, 1),
  ('United Launch Alliance', CURRENT_TIMESTAMP, CURRENT_TIMESTAMP, 1);
 
-INSERT INTO launchSites
+INSERT INTO `launchSites`
 (`name`, `operatedBy`, `createdAt`, `updatedAt`) 
 VALUES
 ('Cape Canaveral, Florida', 'NASA', CURRENT_TIMESTAMP, CURRENT_TIMESTAMP),
@@ -57,11 +62,11 @@ VALUES
 ('New Glenn 3 Stage', 5, 150000000, 30000, 550000, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP, 1);
 
 INSERT INTO `flights`
-(`destination`, `arrivalTimeEst`, `totalCost`, `flightNumber`, `timestamp`, `createdAt`, `updatedAt`, `PlanetId`, `UserId`, `RocketId`)
+(`arrivalTimeEst`, `totalCost`, `flightNumber`, `timestamp`, `createdAt`, `updatedAt`, `PlanetId`, `UserId`, `RocketId`)
 VALUES
-('Neptune', 10000, 1600000000000, 'ECA543', CURRENT_TIMESTAMP, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP, 8, 1, 9),
-('Saturn', 1000, 1340000000000, 'JFA191', CURRENT_TIMESTAMP, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP, 8, 1, 9),
-('Mars', 100, 80000000, 'XMRA43', CURRENT_TIMESTAMP, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP, 8, 1, 9);
+(10000, 1600000000000, 'ECA543', CURRENT_TIMESTAMP, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP, 8, 1, 9),
+(1000, 1340000000000, 'JFA191', CURRENT_TIMESTAMP, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP, 8, 1, 9),
+(100, 80000000, 'XMRA43', CURRENT_TIMESTAMP, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP, 8, 1, 9);
 
 INSERT INTO `flightamenities`
 (`createdAt`, `updatedAt`, `AmenityId`, `FlightId`)

@@ -1,9 +1,5 @@
 module.exports = function (sequelize, DataTypes) {
   const Flight = sequelize.define("Flight", {
-    destination: {
-      type: DataTypes.STRING,
-      allowNull: false
-    },
     arrivalTimeEst: {
       type: DataTypes.INTEGER,
       allowNull: false
