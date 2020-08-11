@@ -81,14 +81,14 @@ module.exports = {
       };
 
       await db.Flight.create(massagedData);
-      console.log("trying to add the whole thing");
-      // res.render("expedition/choose-timestamp", {});
-    } else {
-      console.log("no block");
+      await db.FlightInProgress.destroy({
+        where: {
+          id: inProgress.dataValues.id
+        }
+      });
+
+      res.render("expedition/success", {});
     }
-
-
-
   },
   logout: function (req, res) {
     req.logout();
