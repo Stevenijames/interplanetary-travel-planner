@@ -1,7 +1,7 @@
 {{>header-navbar}}
 {{> messages}}
 {{!-- First mile is free --}}
-<a class="dashboard-block">
+<div class="dashboard-block">
     <div class="header">
         <h3>Expedition</h3>
     </div>
@@ -11,36 +11,45 @@
         <h3 class="header">Choose Amenities:</h3>
         <h4>Choose your destination!</h4>
         <ul>
-            <li>Mars</li>
-            <li>Moon</li>
-            <p>We are not providing travel services to the moon since it's so yesterday</p>
-            <p>We shouldn't have to say this, but we're not providing travel services to the Sun due, for obvious
-                reasons.
-            </p>
-            {{!-- GENERATE PLANETS HERE --}}
-        </ul>
-
-        <h4>Choose the company you want to fly with!</h4>
-        <ul>
-            {{!-- GENERATE COMPANIES HERE --}}
-        </ul>
-        <h4>Choose the rocket that will deliver you to the Heavens your next adventure!</h4>
-        <ul>
-            {{!-- BASED ON COMPANIES SHOW ROCKETS --}}
-            {{!-- SELECT THING (+ and - buttons) --}}
-            <li>how many passengers</li>
-            <li>what amenities would you like to add (free chinese noodles included)
-                {{!-- MODAL ADD JUST ONE --}}
-            </li>
+            {{#each amenities}}
             <li>
-                Are you sure you want to come back to Earth?
-                {{!-- SCHEDULE RETURN FLIGHT AS WELL --}}
+                {{ dataValues.name }} ${{ dataValues.cost }} {{ dataValues.description }}
+
+                <button data-add data-amenity-id={{ dataValues.id }}>Add</button>
             </li>
+            {{/each}}
         </ul>
+        <button data-finalize>Finalize Amenities</button>
     </div>
+</div>
 
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<script>
+    //    $("[data-delete]").on("click", function () {
+    //        const amenityId = $(this).data("amenity-id");
+    //        console.log(amenityId);
+    //        $.ajax(`/api/delete/amenity/${amenityId}`, {
+    //            type: "DELETE"
+    //        }).then((result) => {
+    //            setTimeout(function () { location.reload(true); console.log(result) }, 5000);
+    //        }).catch(err => console.log(err));
+    //    });
 
+    $("[data-add]").on("click", function () {
+        const amenityId = $(this).data("amenity-id");
+        console.log(amenityId);
+        $.ajax(`/api/add/amenity/${amenityId}`, {
+            type: "POST"
+        }).then((result) => {
+            setTimeout(function () { location.reload(true); console.log(result) }, 100);
+        }).catch(err => console.log(err));
+    });
 
-
-    </div>
-    </div>
+//    $("[data-finalize]").on("click", function () {
+//        $.ajax(`/api/amenity/finalize`, {
+//            type: "POST"
+//        }).then((result) => {
+//            setTimeout(function () { location.reload(true); console.log(result) }, 5000);
+//        }).catch(err => console.log(err));
+//    }); 
+</script>

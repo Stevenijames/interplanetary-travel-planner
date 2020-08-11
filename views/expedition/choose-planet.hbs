@@ -1,111 +1,68 @@
 {{>header-navbar}}
 {{> messages}}
 {{!-- First mile is free --}}
-<a class="dashboard-block">
-    <div class="header">
-        <h3>Expedition</h3>
-    </div>
-    <div class="line-break"></div>
-
-    <div class="expeditions-block">
-        <h3 class="header">Choose Planet:</h3>
-        <h4>Choose your destination!</h4>
-        <ul>
-            <li>Mars</li>
-            <li>Moon</li>
-            <p>We are not providing travel services to the moon since it's so yesterday</p>
-            <p>We shouldn't have to say this, but we're not providing travel services to the Sun due, for obvious
-                reasons.
-            </p>
-            {{!-- GENERATE PLANETS HERE --}}
-<div class="planets-solar-system">
-    <div class="orbit1"></div>
-    <div class="orbit2"></div>
-    <div class="orbit3"></div>
-    <div class="orbit4"></div>
-    <div class="orbit5"></div>
-    <div class="orbit6"></div>
-    <div class="orbit7"></div>
-    <div class="orbit8"></div>
-    <div class="orbit9"></div>
-    <div class="sun">
-      <div class="mercury">
-        <img src="assets/images/planets/mercury.png" alt="mercury" />
-      </div>
-      <div class="venus">
-        <img src="assets/images/planets/venus.png" alt="venus" />
-      </div>
-      <div class="earth">
-        <img src="assets/images/planets/earth.png" alt="earth" />
-      </div>
-      <div class="moon">
-        <img src="assets/images/planets/moon.png" alt="moon" />
-      </div>
-      <div class="mars">
-        <img src="assets/images/planets/mars.png" alt="mars" />
-      </div>
-      <div class="jupiter">
-        <img src="assets/images/planets/jupiter.png" alt="jupiter" />
-      </div>
-      <div class="saturn">
-        <img src="assets/images/planets/saturn.png" alt="saturn" />
-      </div>
-      <div class="uranus">
-        <img src="assets/images/planets/uranus.png" alt="uranus" />
-      </div>
-      <div class="neptune">
-        <img src="assets/images/planets/neptune.png" alt="neptune" />
-      </div>
-      <div class="pluto">
-        <img src="assets/images/planets/pluto.png" alt="pluto" />
-      </div>
-    </div>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js">
-    $(document).ready(function() {
-
-        const choosePlanet = (planet) => {
-            $.ajax('/api/add/planet', {
-                type: 'POST',
-                data: { planet },
-            });
-        };
-
-
-        $(".mercury").on("click", choosePlanet("mercury"));
-        $(".venus").on("click", choosePlanet("venus"));
-        $(".mars").on("click", choosePlanet("mars"));
-        $(".jupiter").on("click", choosePlanet("jupiter"));
-        $(".saturn").on("click", choosePlanet("saturn"));
-        $(".uranus").on("click", choosePlanet("uranus"));
-        $(".neptune").on("click", choosePlanet("neptune"));
-        $(".pluto").on("click", choosePlanet("neptune"));
-
-    });
-    </script>
+<div class="dashboard-block">
+  <div class="header">
+    <h3>Expedition</h3>
   </div>
-        </ul>
+  <div class="line-break"></div>
 
-        <h4>Choose the company you want to fly with!</h4>
-        <ul>
-            {{!-- GENERATE COMPANIES HERE --}}
-        </ul>
-        <h4>Choose the rocket that will deliver you to the Heavens your next adventure!</h4>
-        <ul>
-            {{!-- BASED ON COMPANIES SHOW ROCKETS --}}
-            {{!-- SELECT THING (+ and - buttons) --}}
-            <li>how many passengers</li>
-            <li>what amenities would you like to add (free chinese noodles included)
-                {{!-- MODAL ADD JUST ONE --}}
-            </li>
-            <li>
-                Are you sure you want to come back to Earth?
-                {{!-- SCHEDULE RETURN FLIGHT AS WELL --}}
-            </li>
-        </ul>
+  <div class="expeditions-block">
+    <h3 class="header">Choose Planet:</h3>
+    <h4>Choose your destination!</h4>
+    <div class="planets-solar-system">
+      <div class="orbit1"></div>
+      <div class="orbit2"></div>
+      <div class="orbit3"></div>
+      <div class="orbit4"></div>
+      <div class="orbit5"></div>
+      <div class="orbit6"></div>
+      <div class="orbit7"></div>
+      <div class="orbit8"></div>
+      <div class="orbit9"></div>
+      <div class="sun">
+        <div class="mercury">
+          <img src="assets/images/planets/mercury.png" alt="mercury" />
+        </div>
+        <div class="venus">
+          <img src="assets/images/planets/venus.png" alt="venus" />
+        </div>
+        <div class="earth">
+          <img src="assets/images/planets/earth.png" alt="earth" />
+        </div>
+        <div class="moon">
+          <img src="assets/images/planets/moon.png" alt="moon" />
+        </div>
+        <div class="mars">
+          <img src="assets/images/planets/mars.png" alt="mars" />
+        </div>
+        <div class="jupiter">
+          <img src="assets/images/planets/jupiter.png" alt="jupiter" />
+        </div>
+        <div class="saturn">
+          <img src="assets/images/planets/saturn.png" alt="saturn" />
+        </div>
+        <div class="uranus">
+          <img src="assets/images/planets/uranus.png" alt="uranus" />
+        </div>
+        <div class="neptune">
+          <img src="assets/images/planets/neptune.png" alt="neptune" />
+        </div>
+        <div class="pluto">
+          <img src="assets/images/planets/pluto.png" alt="pluto" />
+        </div>
+      </div>
     </div>
-
-
-
-
-    </div>
-    </div>
+  </div>
+</div>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<script>
+  $("img").on("click", function () {
+    const planet = $(this).attr("alt").charAt(0).toUpperCase() + $(this).attr("alt").slice(1);
+    $.ajax(`/api/add/planet/${planet}`, {
+      type: "POST"
+    }).then(() => {
+      setTimeout(function () { location.reload(true) }, 100);
+    }).catch(err => console.log(err));
+  });
+</script>
