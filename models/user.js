@@ -22,7 +22,7 @@ module.exports = function (sequelize, DataTypes) {
       }
     });
 
-    User.hasMany(models.FlightInProgress, {
+    User.hasOne(models.FlightInProgress, {
       foreignKey: {}
     });
 

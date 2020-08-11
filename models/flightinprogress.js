@@ -11,13 +11,16 @@ module.exports = function (sequelize, DataTypes) {
     },
     timestamp: {
       type: DataTypes.DATE,
+    },
+    amenitiesFinalized: {
+      type: DataTypes.BOOLEAN,
     }
   });
 
   FlightInProgress.associate = function (models) {
 
-    FlightInProgress.belongsToMany(models.Amenity, {
-      through: "FlightInProgressAmenities"
+    FlightInProgress.belongsTo(models.Amenity, {
+      foreignKey: {}
     });
 
     FlightInProgress.belongsTo(models.Planet, {
