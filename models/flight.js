@@ -1,11 +1,7 @@
 module.exports = function (sequelize, DataTypes) {
   const Flight = sequelize.define("Flight", {
-    destination: {
-      type: DataTypes.STRING,
-      allowNull: false
-    },
     arrivalTimeEst: {
-      type: DataTypes.INTEGER,
+      type: DataTypes.DATE,
       allowNull: false
     },
     totalCost: {
@@ -24,8 +20,10 @@ module.exports = function (sequelize, DataTypes) {
 
   Flight.associate = function (models) {
 
-    Flight.belongsToMany(models.Amenity, {
-      through: "FlightAmenities"
+    Flight.belongsTo(models.Amenity, {
+      foreignKey: {
+        allowNull: false
+      }
     });
 
     Flight.belongsTo(models.Planet, {

@@ -1,7 +1,7 @@
 const { route } = require("..");
 const router = require("express").Router();
 const db = require("../../models");
-const { findAmenities, findPlanets, findRockets, findFlights } = require("../modelQueries.js");
+const modelController = require("../../controllers/modelController");
 // require your site-specific route files here...
 // var bookRoutes = require("./books");
 
@@ -16,9 +16,9 @@ const { findAmenities, findPlanets, findRockets, findFlights } = require("../mod
 //   })
 // })
 
-router.get("/rockets", findRockets);
-router.get("/planets", findPlanets);
-router.get("/amenities", findAmenities);
-router.get("/flights/:id", findFlights);
+router.get("/rockets", modelController.findRockets);
+router.get("/planets", modelController.findPlanets);
+router.get("/amenities", modelController.findAmenities);
+router.get("/flights/:id", modelController.findFlights);
 
 module.exports = router;

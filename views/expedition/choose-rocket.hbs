@@ -1,0 +1,45 @@
+{{>header-navbar}}
+{{> messages}}
+<a href="/logout">
+    <div class="logout-button">Logout</div>
+</a>
+<a href="/api/reset">
+    <div class="reset-button">Reset</div>
+</a>
+<div class="dashboard-block">
+    <div class="header">
+        <h3>Expedition</h3>
+    </div>
+    <div class="line-break"></div>
+
+    <div class="expeditions-block">
+        <table>
+            <thead>
+                <tr>
+                    <th>Rocket</th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                {{#each rockets }}
+                <tr>
+                    <td>{{ dataValues.name }}</td>
+                    <td><button data-rocket={{ dataValues.id }}>Choose</button></td>
+                </tr>
+                {{/each}}
+            </tbody>
+        </table>
+    </div>
+</div>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<script>
+    $("button").on("click", function () {
+        const rocketId = $(this).data("rocket");
+        console.log(rocketId);
+        $.post(`/api/add/rocket/${rocketId}`)
+            .then(() => {
+                setTimeout(function () { location.reload(true) }, 100);
+            })
+            .catch(err => console.log(err));
+    });
+</script>
