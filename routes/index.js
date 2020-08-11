@@ -33,50 +33,71 @@ router.post("/login", passport.authenticate("local-login", {
   failureFlash: true
 }));
 
-router.post("/api/add/planet", async (req, res) => {
-  // if no row exists for the user create one
-  if (!await db.FlightInProgress.findOne({ where: { UserId: req.user.id } })) await db.FlightInProgress.create({ UserId: req.user.id });
-  // get the planet passed to get the id
-  const planetSequelize = await db.Planet.findOne({ where: { name: req.body.planet } });
-  // assign id to parsedPlanetId
-  const parsedPlanetId = planetSequelize.dataValues.id;
-  // update the object
-  await db.FlightInProgress.update({ PlanetId: parsedPlanetId }, { where: { UserId: req.user.id } });
-  res.redirect("/expedition");
+router.post("/api/add/planet/:planet", async (req, res) => {
+  try {
+    console.log("planet post");
+    // if no row exists for the user create one
+    if (!await db.FlightInProgress.findOne({ where: { UserId: req.user.id } })) await db.FlightInProgress.create({ UserId: req.user.id });
+    // get the planet passed to get the id
+    const planetSequelize = await db.Planet.findOne({ where: { name: req.params.planet } });
+    // assign id to parsedPlanetId
+    const parsedPlanetId = planetSequelize.dataValues.id;
+    // update the object
+    const result = await db.FlightInProgress.update({ PlanetId: parsedPlanetId }, { where: { UserId: req.user.id } });
+    res.json(result);
+  } catch (err) { console.log(err); }
 });
 
-router.post("/api/add/rocket", async (req, res) => {
-  // get the rocket passed to get the id
-  const rocketSequelize = await db.Rocket.findOne({ where: { name: req.body.rocket } });
+router.post("/api/add/rocket/:rocketId", async (req, res) => {
+  console.log("rocket post");
   // assign id to parsedRocketId
-  const parsedRocketId = rocketSequelize.dataValues.id;
+  const parsedRocketId = req.params.rocketId;
   // update the object
-  await db.FlightInProgress.update({ RocketId: parsedRocketId }, { where: { UserId: req.user.id } });
-  res.redirect("/expedition");
+  const result = await db.FlightInProgress.update({ RocketId: parsedRocketId }, { where: { UserId: req.user.id } });
+  res.json(result);
 });
 
-router.post("/api/add/amenities", async (req, res) => {
-  //!!!
-  // get the planet passed to get the id
-  const rocketSequelize = await db.Rocket.findOne({ where: { name: req.body.rocket } });
-  // assign id to parsedPlanetId
-  const parsedRocketId = rocketSequelize.dataValues.id;
+router.post("/api/add/amenity/:amenityId", async (req, res) => {
+  console.log("amenities post");
+  // assign id to parsedAmenityId
+  const parsedAmenityId = req.params.amenityId;
   // update the object
-  await db.FlightInProgress.update({ RocketId: parsedRocketId }, { where: { UserId: req.user.id } });
-  res.redirect("/expedition");
+  const result = await db.FlightInProgress.update({ AmenityId: parsedAmenityId }, { where: { UserId: req.user.id } });
+  res.json(result);
+});
+
+router.delete("/api/delete/amenity/:amenityId", async (req, res) => {
+  //!!!!!!!!!! DELETE ROUTES!
+  //!!!
+  console.log("amenities delete");
+  // get the planet passed to get the id
+  // const rocketSequelize = await db.Rocket.findOne({ where: { name: req.params.rocket } });
+  // assign id to parsedPlanetId
+  // const parsedRocketId = rocketSequelize.dataValues.id;
+  // update the object
+  // await db.FlightInProgress.update({ RocketId: parsedRocketId }, { where: { UserId: req.user.id } });
+
+
+  //return in a post the whole database to see what amenities are added
+
+  res.end();
+});
+
+router.post("/api/amenity/finalize", (req, res) => {
+  console.log("finalize amenities post");
+  // finalize amenities
+  db.FlightInProgress.update({ amenitiesFinalized: 1 }, { where: { UserId: req.user.id } })
+    .then((result) => res.json(result))
+    .catch((err) => console.log(err));
 });
 
 router.post("/api/add/timestamp", async (req, res) => {
-  //!!!
-  // get the planet passed to get the id
-  const rocketSequelize = await db.Rocket.findOne({ where: { name: req.body.rocket } });
-  // assign id to parsedPlanetId
-  const parsedRocketId = rocketSequelize.dataValues.id;
+  console.log("timestamp post");
+  console.log(req.body);
   // update the object
-  await db.FlightInProgress.update({ RocketId: parsedRocketId }, { where: { UserId: req.user.id } });
+  const result = await db.FlightInProgress.update({ timestamp: req.body.timestamp }, { where: { UserId: req.user.id } });
   res.redirect("/expedition");
 });
-
 
 
 

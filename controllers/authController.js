@@ -57,17 +57,21 @@ module.exports = {
     } else if (inProgress.dataValues.PlanetId && !inProgress.dataValues.RocketId) {
       // Planet (but no Rocket) -> Rocket
       console.log("3rd block");
-      res.render("expedition/choose-rocket", {});
-    } else if (inProgress.dataValues.PlanetId && inProgress.dataValues.RocketId && inProgress.dataValues.Amenities.length === 0) {
-      // Planet and Rocket (but no Amenities) -> Amenities
+      // getting all available rockets
+      const rockets = await db.Rocket.findAll();
+      res.render("expedition/choose-rocket", { rockets });
+    } else if (inProgress.dataValues.PlanetId && inProgress.dataValues.RocketId && !inProgress.dataValues.AmenityId) {
+      // Planet and Rocket (but not finalized Amenities) -> Amenities
       console.log("4th block");
-      res.render("expedition/choose-amenities", {});
-    } else if (inProgress.dataValues.PlanetId && inProgress.dataValues.RocketId && inProgress.dataValues.Amenities.length > 0 && !inProgress.dataValues.timestamp) {
-      // Planet and Rocket and Amenities (but no Timestamp) -> Timestamp
+      // getting all available amenities
+      const amenities = await db.Amenity.findAll();
+      res.render("expedition/choose-amenities", { amenities });
+    } else if (inProgress.dataValues.PlanetId && inProgress.dataValues.RocketId && inProgress.dataValues.AmenityId && !inProgress.dataValues.timestamp) {
+      // Planet and Rocket and Amenities finalized (but no Timestamp) -> Timestamp
       console.log("5th block");
       res.render("expedition/choose-timestamp", {});
-    } else if (inProgress.dataValues.PlanetId && inProgress.dataValues.RocketId && inProgress.dataValues.Amenities.length > 0 && inProgress.dataValues.timestamp) {
-      // Planet and Rocket and Amenities and Timestamp -> Add to main db
+    } else if (inProgress.dataValues.PlanetId && inProgress.dataValues.RocketId && inProgress.dataValues.AmenityId && inProgress.dataValues.timestamp) {
+      // Planet and Rocket and Amenities finalized and Timestamp -> 1b
       console.log("5th block");
 
       const massagedData = {
@@ -77,7 +81,8 @@ module.exports = {
         timestamp: inProgress.dataValues.timestamp,
         PlanetId: inProgress.dataValues.PlanetId,
         UserId: inProgress.dataValues.UserId,
-        RocketId: inProgress.dataValues.RocketId
+        RocketId: inProgress.dataValues.RocketId,
+        AmenityId: inProgress.dataValues.AmenityId
       };
 
       await db.Flight.create(massagedData);
