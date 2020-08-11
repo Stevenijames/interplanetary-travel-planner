@@ -8,6 +8,14 @@ module.exports = function (sequelize, DataTypes) {
     distance: {
       type: DataTypes.BIGINT,
       allowNull: false
+    },
+    description: {
+      type: DataTypes.TEXT,
+      allowNull: false,
+    },
+    image: {
+      type: DataTypes.STRING,
+      allowNull: false,
     }
   });
 
