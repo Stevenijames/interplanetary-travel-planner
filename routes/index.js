@@ -33,15 +33,18 @@ router.post("/login", passport.authenticate("local-login", {
   failureFlash: true
 }));
 
-router.post("/api/add/planet/:planet", async (req, res) => {
+router.post("/api/add/planet/:planetId", async (req, res) => {
   try {
     console.log("planet post");
     // if no row exists for the user create one
     if (!await db.FlightInProgress.findOne({ where: { UserId: req.user.id } })) await db.FlightInProgress.create({ UserId: req.user.id });
     // get the planet passed to get the id
-    const planetSequelize = await db.Planet.findOne({ where: { name: req.params.planet } });
-    // assign id to parsedPlanetId
-    const parsedPlanetId = planetSequelize.dataValues.id;
+    const parsedPlanetId = Number(req.params.planetId);
+    // if Earth then ask again (no flights to Earth)
+    if ((await db.Planet.findOne({ where: { id: parsedPlanetId } })).dataValues.name === "Earth") {
+      res.redirect("/expedition");
+      return;
+    }
     // update the object
     const result = await db.FlightInProgress.update({ PlanetId: parsedPlanetId }, { where: { UserId: req.user.id } });
     res.json(result);
@@ -101,5 +104,11 @@ router.post("/api/add/timestamp", async (req, res) => {
 
 
 
+router.get("/api/reset", async (req, res) => {
+  console.log("get reset");
+  // destroy the object
+  const result = await db.FlightInProgress.destroy({ where: { UserId: req.user.id } });
+  res.redirect("/dashboard");
+});
 
 module.exports = router;
