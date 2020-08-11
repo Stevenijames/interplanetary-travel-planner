@@ -1,0 +1,46 @@
+<div class="login-signup-block">
+
+    <div class="header">
+        <h1>Login</h1>
+    </div>
+
+    <div class="easter-gif">
+        <img src="/assets/images/astro_mindblown.gif" alt="easter gif">
+    </div>
+
+    <div class="example">
+        <div class="example-header">Demo user:</div>
+        Email:<br />
+        example@email.com<br />
+        Password:<br />
+        example@email.com<br />
+    </div>
+    <div class="card">
+        {{> messages}}
+        <nav class="navbar-block">
+            <ul>
+                <a href="/signup">
+                    <li>Signup</li>
+                </a>
+                <a href="/login">
+                    <li>Login</li>
+                </a>
+                <a href="/">
+                    <li>Home</li>
+                </a>
+            </ul>
+        </nav>
+        <div class="line-break"></div>
+        <form id="signin" name="signin" method="post" action="login">
+            <div class="login-field-block">
+                <label for="email">Email:</label>
+                <input name="email" type="email" class="form-control" id="email" placeholder="email@domain.com">
+            </div>
+            <div class="password-field-block">
+                <label for="password">Password:</label>
+                <input name="password" type="password" class="form-control" id="password" placeholder="password">
+            </div>
+            <button class="login-signup-button" type="submit">Login</button>
+        </form>
+    </div>
+</div>

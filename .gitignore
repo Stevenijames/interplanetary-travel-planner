@@ -1,0 +1,10 @@
+node_modules
+.DS_Store
+.env
+.nyc_output
+coverage
+.coveralls.yml
+lcov.info
+logs
+*.log
+npm-debug.log*

@@ -1,0 +1,46 @@
+{
+  "name": "interplanetary-travel-planner",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "node server.js",
+    "lint": "eslint \"**/*.js\"",
+    "lint:fix": "eslint --fix  \"**/*.js\"",
+    "test": "mocha",
+    "test:coverage": "nyc --reporter=text mocha",
+    "test:coveralls": "nyc --reporter=text-lcov npm test | coveralls"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/mi544/interplanetary-travel-planner.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/mi544/interplanetary-travel-planner/issues"
+  },
+  "homepage": "https://github.com/mi544/interplanetary-travel-planner#readme",
+  "dependencies": {
+    "bcrypt-nodejs": "0.0.3",
+    "connect-flash": "^0.1.1",
+    "dotenv": "^8.2.0",
+    "express": "^4.17.1",
+    "express-handlebars": "^5.1.0",
+    "express-session": "^1.17.1",
+    "moment": "^2.27.0",
+    "mysql2": "^2.1.0",
+    "passport": "^0.4.1",
+    "passport-local": "^1.0.0",
+    "sequelize": "^6.3.4"
+  },
+  "devDependencies": {
+    "chai": "^4.2.0",
+    "coveralls": "^3.1.0",
+    "cross-env": "^7.0.2",
+    "eslint": "^7.6.0",
+    "mocha": "^8.1.1",
+    "nyc": "^15.1.0"
+  }
+}
