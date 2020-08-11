@@ -4,46 +4,35 @@
     <div class="header">
         <h3>Dashboard</h3>
     </div>
-    <div class="line-break"></div>
-    <h3>Welcome, {{email}}! You're logged in!</h3>
+</a>
+<div class="line-break"></div>
 
-    <div class="expeditions-block">
-        <h3 class="header">Your interplanetary expeditions:</h3>
-        <table>
-            {{!-- GENERATE EXPEDITIONS HERE --}}
-            <thead>
-                <tr>
-                    <th>Flight ID</th>
-                    <th>Destination</th>
-                    <th>Date</th>
-                    <th>Company</th>
-                    <th>Rocket</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr>
-                    {{!-- {{ #each Flight }}
-                    <td>{{ flightNumber }}</td>
-                    <td>{{ destination }}</td>
-                    <td>{{ arrivalTimeEst }}</td>
-                    <td>{{ refIdCompany }}</td>
-                    <td>{{ refIdRocket }}</td>
-                    {{/each}} --}}
-                </tr>
-            </tbody>
-        </table>
-    </div>
+<div class="expeditions-block">
+    <h3 class="header">Your interplanetary expeditions:</h3>
+    <table>
+        {{!-- GENERATE EXPEDITIONS HERE --}}
+        <thead>
+            <tr>
+                <th>Flight Number</th>
+                <th>Destination</th>
+                <th>Date</th>
+                <th>Rocket</th>
+            </tr>
+        </thead>
+        <tbody>
+            {{#each flights }}
+            <tr>
+                <td>{{ dataValues.flightNumber }}</td>
+                <td>{{ Planet.dataValues.name }}</td>
+                <td>{{ dataValues.timestamp }}</td>
+                <td>{{ Rocket.dataValues.name }}</td>
+                {{!-- <td>{{ @root.Rocket.name }}</td> --}}
+            </tr>
+            {{/each}}
+        </tbody>
+    </table>
+</div>
 
-    <div class="menu-block">
-        <a href="/expedition"><button>Explore the uncharted territories</button></a>
-    </div>
-
-    <div class="card">
-        <div class="card-body">
-            <h3>Example user object (available as req.body in the controller only when user is logged in):</h3>
-            <pre>
-            {{user}}
-        </pre>
-        </div>
-    </div>
-    </div>
+<div class="menu-block">
+    <a href="/expedition"><button>Explore the uncharted territories</button></a>
+</div>
