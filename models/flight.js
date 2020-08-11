@@ -1,7 +1,7 @@
 module.exports = function (sequelize, DataTypes) {
   const Flight = sequelize.define("Flight", {
     arrivalTimeEst: {
-      type: DataTypes.INTEGER,
+      type: DataTypes.DATE,
       allowNull: false
     },
     totalCost: {

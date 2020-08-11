@@ -38,6 +38,11 @@ module.exports = function (sequelize, DataTypes) {
     Rocket.hasMany(models.Flight, {
       onDelete: "cascade"
     });
+
+    Rocket.hasMany(models.FlightInProgress, {
+      onDelete: "cascade"
+    });
+
   };
 
   return Rocket;

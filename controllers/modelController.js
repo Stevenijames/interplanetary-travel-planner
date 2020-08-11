@@ -25,10 +25,11 @@ module.exports = {
     if (req.user.id === Number(req.params.id)) {
       db.Flight.findAll({
         where: {
-          id: Number(req.params.id)
+          UserId: Number(req.params.id)
         },
-        include: [db.Planet, db.User, db.Rocket, db.Amenity]
+        include: [db.Planet, db.User, { model: db.Rocket, include: db.Company }, db.Amenity]
       }).then(data => {
+        console.log(data);
         res.json(data);
       }).catch(err => {
         throw err;

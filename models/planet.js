@@ -11,10 +11,16 @@ module.exports = function (sequelize, DataTypes) {
     }
   });
 
-  // Planet.associate = function (models) {
 
+  Planet.associate = function (models) {
+    Planet.hasMany(models.Flight, {
+      onDelete: "cascade"
+    });
 
-  // };
+    Planet.hasMany(models.FlightInProgress, {
+      onDelete: "cascade"
+    });
+  };
 
   return Planet;
 };

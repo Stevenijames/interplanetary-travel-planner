@@ -20,6 +20,10 @@ module.exports = function (sequelize, DataTypes) {
       through: "FlightAmenities"
     });
 
+    Amenity.belongsToMany(models.FlightInProgress, {
+      through: "FlightInProgressAmenities"
+    });
+
     // Amenity.belongsToMany(models.Rocket, {
     //   through: "RocketAmenities"
     // });
