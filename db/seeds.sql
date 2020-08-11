@@ -12,7 +12,11 @@ VALUES
 ('Private Bedroom', 35000, 'Enjoy privacy in a custom-built compartment providing the maximum level of comfort for a single individual.', CURRENT_TIMESTAMP, CURRENT_TIMESTAMP),
 ('Pilot in Command Flight Experience', 140000, 'Sit as the "Pilot in Command" of your spacecraft for an entire shift! A certified flight instructor will sit next to you every step of the way, but you will be in command of your journey! Requires pre-flight training session.', CURRENT_TIMESTAMP, CURRENT_TIMESTAMP),
 ('Influencer Package', 80000, 'A professional photographer/videographer will join your mission and document the entire story visually, making you the star of an adventure that you will be sharing for the rest of your life!', CURRENT_TIMESTAMP, CURRENT_TIMESTAMP),
-('Upgraded Personal Items', 7500, 'This package provides an additional compartment of storage space for your personal belongings for the entirity of the trip.', CURRENT_TIMESTAMP, CURRENT_TIMESTAMP);
+('Upgraded Personal Items', 7500, 'This package provides an additional compartment of storage space for your personal belongings for the entirity of the trip.', CURRENT_TIMESTAMP, CURRENT_TIMESTAMP),
+('Mrs. Meyers Hand Soap (while in Gravity)', 100, 'Your favorite soap but in space', CURRENT_TIMESTAMP, CURRENT_TIMESTAMP),
+('VHS Casette Player (1999)', 2000, 'Never get bored', CURRENT_TIMESTAMP, CURRENT_TIMESTAMP),
+('Sesame Street', 500, 'VHS casette', CURRENT_TIMESTAMP, CURRENT_TIMESTAMP),
+('Personal supply of "Moon"Shine', 5000, 'never be thirsty.....or sober', CURRENT_TIMESTAMP, CURRENT_TIMESTAMP);
 
 INSERT INTO `countries`
 (`name`, `createdAt`, `updatedAt`)
@@ -62,28 +66,28 @@ VALUES
 ('New Glenn 3 Stage', 5, 150000000, 30000, 550000, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP, 1);
 
 INSERT INTO `flights`
-(`arrivalTimeEst`, `totalCost`, `flightNumber`, `timestamp`, `createdAt`, `updatedAt`, `PlanetId`, `UserId`, `RocketId`)
+(`arrivalTimeEst`, `totalCost`, `flightNumber`, `timestamp`, `createdAt`, `updatedAt`, `AmenityId`, `PlanetId`, `UserId`, `RocketId`)
 VALUES
-(CURRENT_TIMESTAMP, 1600000000000, 'ECA543', CURRENT_TIMESTAMP, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP, 8, 1, 9),
-(CURRENT_TIMESTAMP, 1340000000000, 'JFA191', CURRENT_TIMESTAMP, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP, 3, 1, 10),
-(CURRENT_TIMESTAMP, 80000000, 'XMRA43', CURRENT_TIMESTAMP, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP, 6, 1, 11);
+(CURRENT_TIMESTAMP, 1600000000000, 'ECA543', CURRENT_TIMESTAMP, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP, 3 ,8, 1, 9),
+(CURRENT_TIMESTAMP, 1340000000000, 'JFA191', CURRENT_TIMESTAMP, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP, 2, 3, 1, 10),
+(CURRENT_TIMESTAMP, 80000000, 'XMRA43', CURRENT_TIMESTAMP, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP, 1, 6, 1, 11);
 
-INSERT INTO `flightamenities`
-(`createdAt`, `updatedAt`, `AmenityId`, `FlightId`)
-VALUES
-(CURRENT_TIMESTAMP, CURRENT_TIMESTAMP, 1, 1),
-(CURRENT_TIMESTAMP, CURRENT_TIMESTAMP, 2, 1),
-(CURRENT_TIMESTAMP, CURRENT_TIMESTAMP, 4, 1),
-(CURRENT_TIMESTAMP, CURRENT_TIMESTAMP, 5, 1);
+-- INSERT INTO `flightamenities`
+-- (`createdAt`, `updatedAt`, `AmenityId`, `FlightId`)
+-- VALUES
+-- (CURRENT_TIMESTAMP, CURRENT_TIMESTAMP, 1, 1),
+-- (CURRENT_TIMESTAMP, CURRENT_TIMESTAMP, 2, 1),
+-- (CURRENT_TIMESTAMP, CURRENT_TIMESTAMP, 4, 1),
+-- (CURRENT_TIMESTAMP, CURRENT_TIMESTAMP, 5, 1);
 
-INSERT INTO `flightinprogresses`
-(`arrivalTimeEst`, `totalCost`, `flightNumber`, `timestamp`, `createdAt`, `updatedAt`, `PlanetId`, `UserId`, `RocketId`)
-VALUES
-(CURRENT_TIMESTAMP, 1600000000000, 'ECA543', CURRENT_TIMESTAMP, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP, 7, 1, 10);
+-- INSERT INTO `flightinprogresses`
+-- (`arrivalTimeEst`, `totalCost`, `flightNumber`, `timestamp`, `createdAt`, `updatedAt`, `PlanetId`, `UserId`, `RocketId`)
+-- VALUES
+-- (CURRENT_TIMESTAMP, 1600000000000, 'ECA543', CURRENT_TIMESTAMP, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP, 7, 1, 10);
 
-INSERT INTO `flightinprogressamenities`
-(`createdAt`, `updatedAt`, `AmenityId`, `FlightInProgressId`)
-VALUES
-(CURRENT_TIMESTAMP, CURRENT_TIMESTAMP, 1, 1),
-(CURRENT_TIMESTAMP, CURRENT_TIMESTAMP, 2, 1),
-(CURRENT_TIMESTAMP, CURRENT_TIMESTAMP, 5, 1);
+-- INSERT INTO `flightinprogressamenities`
+-- (`createdAt`, `updatedAt`, `AmenityId`, `FlightInProgressId`)
+-- VALUES
+-- (CURRENT_TIMESTAMP, CURRENT_TIMESTAMP, 1, 1),
+-- (CURRENT_TIMESTAMP, CURRENT_TIMESTAMP, 2, 1),
+-- (CURRENT_TIMESTAMP, CURRENT_TIMESTAMP, 5, 1);
